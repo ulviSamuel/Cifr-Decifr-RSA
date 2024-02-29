@@ -32,6 +32,9 @@ public class Console
 	
 	private void menu()
 	{
+		System.out.println("Attenzione! Se il programma non rilevera' un file 'privKey.dat'\n"
+				         + "e un file 'pubKey.dat' allora verranno creati entrambi in modo\n"
+				         + "automatico, altrimenti verranno utilizzati quelli gia' esistenti!\n");
 		String  mess     = "\nMenu\n   1.Cifra un messaggio"
 				         + "\n   2.Decifra un messaggio\n   0.Esci";
 		boolean continua = true;
