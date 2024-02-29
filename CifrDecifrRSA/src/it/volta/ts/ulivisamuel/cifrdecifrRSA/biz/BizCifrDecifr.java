@@ -103,4 +103,29 @@ public class BizCifrDecifr
 		consoleListener.mostraErrore(new CifrDecifrEvent("\nNon è stato possibile cifrare il messaggio!"));
 		return null;
 	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	public String decifraTesto(String cipherText)
+	{
+		
+		if(cipherText != null)
+    	{
+			try {
+				cipher.init(Cipher.DECRYPT_MODE, priKey);
+			} catch (InvalidKeyException e) {
+				e.printStackTrace();
+			}
+			byte[] plainText = null;
+			try {
+				plainText = cipher.doFinal(Base64.getDecoder().decode(cipherText));
+			} catch (IllegalBlockSizeException | BadPaddingException e) {
+				e.printStackTrace();
+			}
+    		consoleListener.mostra(new CifrDecifrEvent("\nTesto decifrato: " + new String(plainText)));
+    		return new String(plainText);
+    	}
+    	consoleListener.mostraErrore(new CifrDecifrEvent("\nNon è stato possibile cifrare il messaggio!"));
+		return null;
+	}
 }
